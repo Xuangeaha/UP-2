@@ -40,6 +40,11 @@ namespace UP
             Console.WriteLine("[ {0}:{1} ] {2}", hour_display, minute_display, args);
         }
 
+        private static void advice(string word, string insert)
+        {
+            Console.WriteLine(">>> {0} [ 输入 {1} ]", word, insert);
+        }
+
         private static void time_logic()
         {
             while (true)
@@ -75,6 +80,7 @@ namespace UP
             };
         
         }
+        
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
