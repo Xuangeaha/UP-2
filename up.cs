@@ -35,9 +35,9 @@ namespace UP
                 "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","俄乌局势","PlayStation","XBox","苹果","微软","华为",
                 "二十大","2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
 
-        private static void printt(params string[] args)
+        private static void printt(string args)
         {
-            Console.WriteLine("[", hour_display + ":" + minute_display, "]", args);
+            Console.WriteLine("[ {0}:{1} ] {2}", hour_display, minute_display, args);
         }
 
         private static void time_logic()
