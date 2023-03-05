@@ -77,7 +77,7 @@ namespace UP
         }
         static void Main(string[] args)
         {
-            Console.WriteLine("我要当up主！2023.0.1");
+            Console.WriteLine("我要当up主！2");
             Console.WriteLine("--------------------------------------------------");
 
             Thread time_thread = new Thread(time_logic);
