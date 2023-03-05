@@ -1,0 +1,15 @@
+D:\ximalaya\resources\library\UP\bin\Debug\net7.0\UP.exe
+D:\ximalaya\resources\library\UP\bin\Debug\net7.0\UP.deps.json
+D:\ximalaya\resources\library\UP\bin\Debug\net7.0\UP.runtimeconfig.json
+D:\ximalaya\resources\library\UP\bin\Debug\net7.0\UP.dll
+D:\ximalaya\resources\library\UP\bin\Debug\net7.0\UP.pdb
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.csproj.AssemblyReference.cache
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.GeneratedMSBuildEditorConfig.editorconfig
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.AssemblyInfoInputs.cache
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.AssemblyInfo.cs
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.csproj.CoreCompileInputs.cache
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.dll
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\refint\UP.dll
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.pdb
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.genruntimeconfig.cache
+D:\ximalaya\resources\library\UP\obj\Debug\net7.0\ref\UP.dll

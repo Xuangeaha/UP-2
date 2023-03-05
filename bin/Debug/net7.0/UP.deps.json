@@ -6,15 +6,15 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v7.0": {
-      "solverIO/1.0.0": {
+      "UP/1.0.0": {
         "runtime": {
-          "solverIO.dll": {}
+          "UP.dll": {}
         }
       }
     }
   },
   "libraries": {
-    "solverIO/1.0.0": {
+    "UP/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -82,6 +82,11 @@ namespace UP
 
             Thread time_thread = new Thread(time_logic);
             time_thread.Start();
+
+            while (true)
+            {
+                printt("测试");
+            }
         }
     }
 }

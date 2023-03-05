@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\ximalaya\\resources\\library\\solverIO\\solverIO.csproj": {}
+    "D:\\ximalaya\\resources\\library\\UP\\UP.csproj": {}
   },
   "projects": {
-    "D:\\ximalaya\\resources\\library\\solverIO\\solverIO.csproj": {
+    "D:\\ximalaya\\resources\\library\\UP\\UP.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\ximalaya\\resources\\library\\solverIO\\solverIO.csproj",
-        "projectName": "solverIO",
-        "projectPath": "D:\\ximalaya\\resources\\library\\solverIO\\solverIO.csproj",
+        "projectUniqueName": "D:\\ximalaya\\resources\\library\\UP\\UP.csproj",
+        "projectName": "UP",
+        "projectPath": "D:\\ximalaya\\resources\\library\\UP\\UP.csproj",
         "packagesPath": "C:\\Users\\xiang\\.nuget\\packages\\",
-        "outputPath": "D:\\ximalaya\\resources\\library\\solverIO\\obj\\",
+        "outputPath": "D:\\ximalaya\\resources\\library\\UP\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\xiang\\AppData\\Roaming\\NuGet\\NuGet.Config"
