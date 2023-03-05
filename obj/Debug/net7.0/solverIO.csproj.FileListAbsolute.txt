@@ -1,0 +1,15 @@
+D:\ximalaya\resources\library\solverIO\bin\Debug\net7.0\solverIO.exe
+D:\ximalaya\resources\library\solverIO\bin\Debug\net7.0\solverIO.deps.json
+D:\ximalaya\resources\library\solverIO\bin\Debug\net7.0\solverIO.runtimeconfig.json
+D:\ximalaya\resources\library\solverIO\bin\Debug\net7.0\solverIO.dll
+D:\ximalaya\resources\library\solverIO\bin\Debug\net7.0\solverIO.pdb
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.csproj.AssemblyReference.cache
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.GeneratedMSBuildEditorConfig.editorconfig
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.AssemblyInfoInputs.cache
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.AssemblyInfo.cs
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.csproj.CoreCompileInputs.cache
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.dll
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\refint\solverIO.dll
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.pdb
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\solverIO.genruntimeconfig.cache
+D:\ximalaya\resources\library\solverIO\obj\Debug\net7.0\ref\solverIO.dll
