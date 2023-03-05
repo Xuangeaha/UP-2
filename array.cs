@@ -1,47 +1,77 @@
 using System;
 using System.Collections;
+using System.Threading;
 
 namespace UP
 {
     class UP
     {
+        private static bool processing = false;
+
+        private static int day = 0;
+        private static int hour_tick = 8;
+        private static int minute_tick = 0;
+        private static string hour_display = "08";
+        private static string minute_display = "00";
+
+        private static int num = 0;
+
+        private static int money = 100;
+
+        private static int follower = 0;
+        private static int play_all = 0;
+
+        private static int energy = 100;
+        private static int hunger = 100;
+
+        private static ArrayList video = new ArrayList();
+        private static ArrayList video_spread = new ArrayList();
+        private static ArrayList video_play = new ArrayList();
+        private static ArrayList video_release_time = new ArrayList();
+
+        private static int advice1 = 0;
+
+        private static ArrayList tags = new ArrayList() {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠","何同学","籽岷","布洛芬","网课","蔡徐坤","原神","Minecraft","世界杯",
+                "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","俄乌局势","PlayStation","XBox","苹果","微软","华为",
+                "二十大","2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
+
         private static void printt(params string[] args)
         {
-            Console
+            Console.WriteLine("[",hour_display+":"+minute_display,"]",args);
+        }
+
+        private static void time_logic()
+        {
+            while True:
+                time.sleep(0.5)
+                global hour_tick, minute_tick, hour_display, minute_display
+                minute_tick += 1
+                if minute_tick == 60:
+                    minute_tick = 0
+                    hour_tick += 1
+                if hour_tick == 24:
+                    hour_tick = 0
+                    minute_tick = 0
+                if len(str(hour_tick)) == 1:
+                    hour_display = "0" + str(hour_tick)
+                else:
+                    hour_display = str(hour_tick)
+                if len(str(minute_tick)) == 1:
+                    minute_display = "0" + str(minute_tick)
+                else:
+                    minute_display = str(minute_tick)
         }
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2023.0.1");
             Console.WriteLine("--------------------------------------------------");
 
-            bool processing = false;
+            
 
-            int day = 0;
-            int hour_tick = 8;
-            int minute_tick = 0;
-            string hour_display = "08";
-            string minute_display = "00";
-
-            int num = 0;
-
-            int money = 100;
-
-            int follower = 0;
-            int play_all = 0;
-
-            int energy = 100;
-            int hunger = 100;
-
-            ArrayList video = new ArrayList();
-            ArrayList video_spread = new ArrayList();
-            ArrayList video_play = new ArrayList();
-            ArrayList video_release_time = new ArrayList();
-
-            int advice1 = 0;
-
-            ArrayList tags = new ArrayList() {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠","何同学","籽岷","布洛芬","网课","蔡徐坤","原神","Minecraft","世界杯",
-                    "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","俄乌局势","PlayStation","XBox","苹果","微软","华为",
-                    "二十大","2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
+            Thread time_thread = new Thread(time_logic);
+            time_thread.Start();
         }
+        
+        
     }
 }
