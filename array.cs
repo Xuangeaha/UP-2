@@ -37,12 +37,13 @@ namespace UP
 
         private static void printt(params string[] args)
         {
-            Console.WriteLine("[",hour_display+":"+minute_display,"]",args);
+            Console.WriteLine("[", hour_display + ":" + minute_display, "]", args);
         }
 
         private static void time_logic()
         {
-            while True:
+            while (true)
+            {
                 time.sleep(0.5)
                 global hour_tick, minute_tick, hour_display, minute_display
                 minute_tick += 1
@@ -60,18 +61,16 @@ namespace UP
                     minute_display = "0" + str(minute_tick)
                 else:
                     minute_display = str(minute_tick)
+            };
+                
         }
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2023.0.1");
             Console.WriteLine("--------------------------------------------------");
 
-            
-
             Thread time_thread = new Thread(time_logic);
             time_thread.Start();
         }
-        
-        
     }
 }
