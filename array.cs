@@ -44,25 +44,36 @@ namespace UP
         {
             while (true)
             {
-                time.sleep(0.5)
-                global hour_tick, minute_tick, hour_display, minute_display
-                minute_tick += 1
-                if minute_tick == 60:
-                    minute_tick = 0
-                    hour_tick += 1
-                if hour_tick == 24:
-                    hour_tick = 0
-                    minute_tick = 0
-                if len(str(hour_tick)) == 1:
-                    hour_display = "0" + str(hour_tick)
-                else:
-                    hour_display = str(hour_tick)
-                if len(str(minute_tick)) == 1:
-                    minute_display = "0" + str(minute_tick)
-                else:
-                    minute_display = str(minute_tick)
+                Thread.Sleep(500);
+                minute_tick += 1;
+                if (minute_tick == 60)
+                {
+                    minute_tick = 0;
+                    hour_tick += 1;
+                };
+                if (hour_tick == 24)
+                {
+                    hour_tick = 0;
+                    minute_tick = 0;
+                };
+                if (Convert.ToString(hour_tick).Length == 1)
+                {
+                    hour_display = "0" + Convert.ToString(hour_tick);
+                }
+                else
+                {
+                    hour_display = Convert.ToString(hour_tick);
+                };
+                if (Convert.ToString(minute_tick).Length == 1)
+                {
+                    minute_display = "0" + Convert.ToString(minute_tick);
+                }
+                else
+                {
+                    minute_display = Convert.ToString(minute_tick);
+                };
             };
-                
+        
         }
         static void Main(string[] args)
         {
