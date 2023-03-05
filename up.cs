@@ -76,11 +76,18 @@ namespace UP
                 else
                 {
                     minute_display = Convert.ToString(minute_tick);
-                };
-            };
-        
+                }
+            }
         }
         
+        private static void reset_time()
+        {
+            hour_tick = 8;
+            minute_tick = 0;
+            hour_display = "08";
+            minute_display = "00";
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
