@@ -181,7 +181,27 @@ namespace UP
             }
         }
 
-        private static 
+        private static void money_up(int moneyup)
+        {
+            money += moneyup;
+            printt("金币 + " + moneyup);
+        }
+
+        private static void money_down(int moneydown)
+        {
+            int money_dif = money - moneydown;
+            if (money_dif < 0)
+            {
+                printt("金币 - " + money);
+                advice("你的金币已用尽。快去投稿视频获得金币吧~","投稿");
+            }
+            else
+            {
+                printt("金币 - " + moneydown);
+                money -= moneydown;
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
