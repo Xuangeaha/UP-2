@@ -103,12 +103,12 @@ namespace UP
                         {
                             for (int list_num = 0; list_num < video.Count; list_num ++)
                             {
-                                int new_play = random.Next(0, (int) video_spread[list_num]);
+                                int new_play = random.Next(0, (int) video_spread[list_num]!);
                                 if (new_play == 0)
                                 {}
                                 else
                                 {
-                                    video_play[list_num] = (int) video_play[list_num] + new_play;
+                                    video_play[list_num] = (int) video_play[list_num]! + new_play;
                                     printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
                                 }
                             }
@@ -117,12 +117,12 @@ namespace UP
                         {
                             for (int list_num = 0; list_num < video.Count; list_num ++)
                             {
-                                int new_play = random.Next((int) video_spread[list_num] - 5 , (int) video_spread[list_num]);
+                                int new_play = random.Next((int) video_spread[list_num]! - 5 , (int) video_spread[list_num]!);
                                 if (new_play == 0)
                                 {}
                                 else
                                 {
-                                    video_play[list_num] = (int) video_play[list_num] + new_play;
+                                    video_play[list_num] = (int) video_play[list_num]! + new_play;
                                     printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
                                 }
                             }
@@ -181,6 +181,7 @@ namespace UP
             }
         }
 
+        private static 
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
