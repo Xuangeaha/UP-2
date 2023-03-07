@@ -152,6 +152,7 @@ namespace UP
                                 follower += new_follower;
                                 printt("恭喜你，你新增了 " + new_follower + " 个粉丝！");
                             }
+                            Thread.Sleep(40 * 1000);
                         }
                     }
                 }
