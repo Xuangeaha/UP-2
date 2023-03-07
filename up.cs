@@ -159,6 +159,17 @@ namespace UP
             }
         }
 
+        private static void enghgr_logic()
+        {
+            while (true)
+            {
+                energy -= 1;
+                hunger -= 2;
+                Thread.Sleep(30 * 1000);
+            }
+        }
+        
+
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
@@ -172,6 +183,9 @@ namespace UP
 
             Thread follower_thread = new Thread(follower_logic);
             follower_thread.Start();
+
+            Thread enghgr_thread = new Thread(enghgr_logic);
+            enghgr_thread.Start();
 
             while (true)
             {
