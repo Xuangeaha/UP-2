@@ -139,6 +139,9 @@ namespace UP
             Thread time_thread = new Thread(time_logic);
             time_thread.Start();
 
+            Thread spread_thread = new Thread(spread_logic);
+            spread_thread.Start();
+
             while (true)
             {
                 printt("测试");
