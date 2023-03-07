@@ -35,6 +35,8 @@ namespace UP
                 "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","俄乌局势","PlayStation","XBox","苹果","微软","华为",
                 "二十大","2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
 
+        private static Random random = new Random();
+
         private static void printt(string args)
         {
             Console.WriteLine("[ {0}:{1} ] {2}", hour_display, minute_display, args);
@@ -94,7 +96,6 @@ namespace UP
             {
                 if (minute_tick == 0)
                 {
-                    Random random = new Random();
                     Thread.Sleep(random.Next(1,40) * 1000);
                     if (processing == false)
                     {
@@ -131,6 +132,32 @@ namespace UP
                 }
             }
         }
+
+        private static void follower_logic()
+        {
+            while (true)
+            {
+                if (processing == false)
+                {
+                    if (num > 1 && day > 1 && play_all > 20)
+                    {
+                        if (hour_tick == 10 || hour_tick == 12 || hour_tick == 16 || hour_tick == 19)
+                        {
+                            Thread.Sleep(random.Next(1,20) * 1000);
+                            int new_follower = random.Next(0, num / 5 + 1);
+                            if (new_follower == 0)
+                            {}
+                            else
+                            {
+                                follower += new_follower;
+                                printt("恭喜你，你新增了 " + new_follower + " 个粉丝！");
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
@@ -141,6 +168,9 @@ namespace UP
 
             Thread spread_thread = new Thread(spread_logic);
             spread_thread.Start();
+
+            Thread follower_thread = new Thread(follower_logic);
+            follower_thread.Start();
 
             while (true)
             {
