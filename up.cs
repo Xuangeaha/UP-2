@@ -169,6 +169,17 @@ namespace UP
             }
         }
         
+        private static void info_logic()
+        {
+            List<int> video_play_list = new List<int> ((int[])video_play.ToArray(typeof(int)));
+            play_all = video_play_list.Sum();
+
+            if (day == 1 && hour_tick == 20 && minute_tick == 0)
+            {
+                advice("该睡觉啦~ 明天元气满满地继续努力！", "睡觉");
+                Thread.Sleep(2 * 1000);
+            }
+        }
 
         static void Main(string[] args)
         {
