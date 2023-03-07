@@ -198,9 +198,13 @@ namespace UP
             Thread enghgr_thread = new Thread(enghgr_logic);
             enghgr_thread.Start();
 
+            Thread info_thread = new Thread(info_logic);
+            info_thread.Start();
+            
             while (true)
             {
                 printt("测试");
+                Thread.Sleep(1000);
             }
         }
     }
