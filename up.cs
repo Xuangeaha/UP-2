@@ -222,11 +222,9 @@ namespace UP
             Thread info_thread = new Thread(info_logic);
             info_thread.Start();
             
-            while (true)
-            {
-                printt("测试");
-                Thread.Sleep(1000);
-            }
+            Console.Write("欢迎来到UP镇！请设置你的名字：");
+            string? name = Console.ReadLine();
+            
         }
     }
 }
