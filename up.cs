@@ -323,6 +323,13 @@ namespace UP
                     Console.WriteLine("--------------------------------------------------");
                     Console.WriteLine("  结算昨日收益...");
                     int spread_width = 0;
+                    for (int key = 0; key < video.Count; key ++)
+                    {
+                        if (video_release_time[key].s)
+                        {
+                            
+                        }
+                    }
                 }
             }
         }
