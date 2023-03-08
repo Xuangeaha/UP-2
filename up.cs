@@ -210,9 +210,41 @@ namespace UP
                 printt("精力 - " + edown);
                 energy -= edown;
             }
-
+            if (energy <= 20)
+            {
+                printt("你觉得有些累了。");
+                if (advice1 == 0)
+                {
+                    advice("吃点东西，回复精力和饱食度！", "恰饭");
+                    advice1 = 1;
+                }
+            }
         }
 
+        public static void h_down(int hdown)
+        {
+            int h_down_dif = hunger - hdown;
+            if (h_down_dif < 0)
+            {
+                printt("精力 - " + hunger);
+                hunger = 0;
+            }
+            else
+            {
+                printt("精力 - " + hdown);
+                hunger -= hdown;
+            }
+            if (hunger <= 20)
+            {
+                printt("你觉得有些饿了。");
+                if (advice1 == 0)
+                {
+                    advice("吃点东西，回复精力和饱食度！", "恰饭");
+                    advice1 = 1;
+                }
+            }
+        }
+        
         private static void money_up(int moneyup)
         {
             money += moneyup;
