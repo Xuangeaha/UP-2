@@ -180,6 +180,38 @@ namespace UP
                 Thread.Sleep(2 * 1000);
             }
         }
+        
+        private static void eh_up(ref int ehref, int ehup)
+        {
+            int eh_up_dif = ehref + ehup;
+            if (eh_up_dif > 100)
+            {
+                int eh_up_rest = 100 - hunger;
+                printt("饱食度 + " + eh_up_rest);
+                hunger = 100;
+            }
+            else
+            {
+                printt("饱食度 + " + ehup);
+                hunger += ehup;
+            }
+        }
+
+        public static void e_down(int edown)
+        {
+            int e_down_dif = energy - edown;
+            if (e_down_dif < 0)
+            {
+                printt("精力 - " + energy);
+                energy = 0;
+            }
+            else
+            {
+                printt("精力 - " + edown);
+                energy -= edown;
+            }
+
+        }
 
         private static void money_up(int moneyup)
         {
