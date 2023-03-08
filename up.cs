@@ -289,6 +289,42 @@ namespace UP
             Console.Write("欢迎来到UP镇！请设置你的名字：");
             string? name = Console.ReadLine();
 
+            while (true)
+            {
+                processing = true;
+                day += 1;
+                if (day == 1)
+                {
+                    Console.WriteLine("--------------------------------------------------");
+                    Console.WriteLine(">>> 这是你在UP镇生活的第",day,"天");
+                    Thread.Sleep(1 * 1000);
+                    Console.WriteLine(">>> 加油吧，",name,"！");
+                    Console.WriteLine("--------------------------------------------------");
+                    Thread.Sleep(1 * 1000);
+                    advice("up镇上还没有人知道你，快投稿你的第一个视频吧~","投稿");
+                }
+                else
+                {
+                    Console.WriteLine("zzZ....");
+                    Thread.Sleep(3 * 1000);
+                    int energyup = 100 - energy;
+                    eh_up(ref energy, energyup);
+                    Thread.Sleep(1 * 1000);
+                    Console.WriteLine("--------------------------------------------------");
+                    Console.WriteLine(">>> 这是你在UP镇生活的第",day,"天");
+                    Thread.Sleep((int)0.5 * 1000);
+                    Console.WriteLine(">>> 你一共投稿了",num,"个作品");
+                    Thread.Sleep((int)0.5 * 1000);
+                    Console.WriteLine(">>> 你现在的粉丝量为",follower);
+                    Thread.Sleep((int)0.5 * 1000);
+                    Console.WriteLine(">>> 你现在的总播放量为",play_all);
+                    Thread.Sleep((int)0.5 * 1000);
+                    Console.WriteLine(">>> 继续加油吧，",name,"！");
+                    Console.WriteLine("--------------------------------------------------");
+                    Console.WriteLine("  结算昨日收益...");
+                    int spread_width = 0;
+                }
+            }
         }
     }
 }
