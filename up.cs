@@ -81,7 +81,7 @@ namespace UP
                 }
             }
         }
-        
+
         private static void reset_time()
         {
             hour_tick = 8;
@@ -96,33 +96,33 @@ namespace UP
             {
                 if (minute_tick == 0)
                 {
-                    Thread.Sleep(random.Next(1,40) * 1000);
+                    Thread.Sleep(random.Next(1, 40) * 1000);
                     if (processing == false)
                     {
                         if (video.Count < 5)
                         {
-                            for (int list_num = 0; list_num < video.Count; list_num ++)
+                            for (int list_num = 0; list_num < video.Count; list_num++)
                             {
-                                int new_play = random.Next(0, (int) video_spread[list_num]!);
+                                int new_play = random.Next(0, (int)video_spread[list_num]!);
                                 if (new_play == 0)
-                                {}
+                                { }
                                 else
                                 {
-                                    video_play[list_num] = (int) video_play[list_num]! + new_play;
+                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
                                     printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
                                 }
                             }
                         }
                         else
                         {
-                            for (int list_num = 0; list_num < video.Count; list_num ++)
+                            for (int list_num = 0; list_num < video.Count; list_num++)
                             {
-                                int new_play = random.Next((int) video_spread[list_num]! - 5 , (int) video_spread[list_num]!);
+                                int new_play = random.Next((int)video_spread[list_num]! - 5, (int)video_spread[list_num]!);
                                 if (new_play == 0)
-                                {}
+                                { }
                                 else
                                 {
-                                    video_play[list_num] = (int) video_play[list_num]! + new_play;
+                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
                                     printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
                                 }
                             }
@@ -143,10 +143,10 @@ namespace UP
                     {
                         if (hour_tick == 10 || hour_tick == 12 || hour_tick == 16 || hour_tick == 19)
                         {
-                            Thread.Sleep(random.Next(1,20) * 1000);
+                            Thread.Sleep(random.Next(1, 20) * 1000);
                             int new_follower = random.Next(0, num / 5 + 1);
                             if (new_follower == 0)
-                            {}
+                            { }
                             else
                             {
                                 follower += new_follower;
@@ -168,10 +168,10 @@ namespace UP
                 Thread.Sleep(30 * 1000);
             }
         }
-        
+
         private static void info_logic()
         {
-            List<int> video_play_list = new List<int> ((int[])video_play.ToArray(typeof(int)));
+            List<int> video_play_list = new List<int>((int[])video_play.ToArray(typeof(int)));
             play_all = video_play_list.Sum();
 
             if (day == 1 && hour_tick == 20 && minute_tick == 0)
@@ -180,7 +180,7 @@ namespace UP
                 Thread.Sleep(2 * 1000);
             }
         }
-        
+
         private static void eh_up(ref int ehref, int ehup)
         {
             int eh_up_dif = ehref + ehup;
@@ -244,7 +244,7 @@ namespace UP
                 }
             }
         }
-        
+
         private static void money_up(int moneyup)
         {
             money += moneyup;
@@ -257,7 +257,7 @@ namespace UP
             if (money_dif < 0)
             {
                 printt("金币 - " + money);
-                advice("你的金币已用尽。快去投稿视频获得金币吧~","投稿");
+                advice("你的金币已用尽。快去投稿视频获得金币吧~", "投稿");
             }
             else
             {
@@ -285,10 +285,10 @@ namespace UP
 
             Thread info_thread = new Thread(info_logic);
             info_thread.Start();
-            
+
             Console.Write("欢迎来到UP镇！请设置你的名字：");
             string? name = Console.ReadLine();
-            
+
         }
     }
 }
