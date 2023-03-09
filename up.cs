@@ -296,12 +296,12 @@ namespace UP
                 if (day == 1)
                 {
                     Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine(">>> 这是你在UP镇生活的第",day,"天");
+                    Console.WriteLine(">>> 这是你在UP镇生活的第", day, "天");
                     Thread.Sleep(1 * 1000);
-                    Console.WriteLine(">>> 加油吧，",name,"！");
+                    Console.WriteLine(">>> 加油吧，", name, "！");
                     Console.WriteLine("--------------------------------------------------");
                     Thread.Sleep(1 * 1000);
-                    advice("up镇上还没有人知道你，快投稿你的第一个视频吧~","投稿");
+                    advice("up镇上还没有人知道你，快投稿你的第一个视频吧~", "投稿");
                 }
                 else
                 {
@@ -311,26 +311,41 @@ namespace UP
                     eh_up(ref energy, energyup);
                     Thread.Sleep(1 * 1000);
                     Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine(">>> 这是你在UP镇生活的第",day,"天");
+                    Console.WriteLine(">>> 这是你在UP镇生活的第", day, "天");
                     Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 你一共投稿了",num,"个作品");
+                    Console.WriteLine(">>> 你一共投稿了", num, "个作品");
                     Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 你现在的粉丝量为",follower);
+                    Console.WriteLine(">>> 你现在的粉丝量为", follower);
                     Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 你现在的总播放量为",play_all);
+                    Console.WriteLine(">>> 你现在的总播放量为", play_all);
                     Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 继续加油吧，",name,"！");
+                    Console.WriteLine(">>> 继续加油吧，", name, "！");
                     Console.WriteLine("--------------------------------------------------");
                     Console.WriteLine("  结算昨日收益...");
                     int spread_width = 0;
-                    for (int key = 0; key < video.Count; key ++)
+                    for (int key = 0; key < video.Count; key++)
                     {
-                        if (video_release_time[key].s)
+                        string video_release_time_string = (string)video_release_time[key]!;
+                        string[] video_release_time_split = video_release_time_string.Split("|");
+                        if (video_release_time_split[0] == Convert.ToString(day - 1))
                         {
-                            
+                            spread_width += (int)video_play[key]!;
                         }
                     }
+                    Console.WriteLine("  昨日总播放量：", spread_width, "获得收益：");
+                    int add_money = random.Next(spread_width / 10, spread_width / 5);
+                    money += add_money;
+                    Console.WriteLine("  金币 +", add_money);
+                    Console.WriteLine("--------------------------------------------------");
+                    string tag1 = (string)tags[random.Next(0, tags.Count)]!;
+                    string tag2 = (string)tags[random.Next(0, tags.Count)]!;
+                    string tag3 = (string)tags[random.Next(0, tags.Count)]!;
+                    string tag4 = (string)tags[random.Next(0, tags.Count)]!;
+                    string tag5 = (string)tags[random.Next(0, tags.Count)]!;
+                    string[] tag = new string[] { tag1, tag2, tag3, tag4, tag5 };
+                    Console.WriteLine("--------------------------------------------------");
                 }
+                reset_time();
             }
         }
     }
