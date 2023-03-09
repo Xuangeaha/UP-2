@@ -359,10 +359,16 @@ namespace UP
                     string tag4 = (string)tags[random.Next(0, tags.Count)]!;
                     string tag5 = (string)tags[random.Next(0, tags.Count)]!;
                     string[] tag = new string[] { tag1, tag2, tag3, tag4, tag5 };
+                    Console.WriteLine("  今日热点：" + tag[0] + "，" + tag[1] + "，" + tag[2] + "，" + tag[3] + "，" + tag[4]);
                     Console.WriteLine("--------------------------------------------------");
                 }
                 reset_time();
-                Thread.Sleep(10000);
+                processing = false;
+                while (true)
+                {
+                    Console.Write("[ {0}:{1} ] ", hour_display, minute_display);
+                    string? cmd = Console.ReadLine();
+                }
             }
         }
     }
