@@ -181,19 +181,35 @@ namespace UP
             }
         }
 
-        private static void eh_up(ref int ehref, int ehup)
+        private static void e_up(int eup)
         {
-            int eh_up_dif = ehref + ehup;
-            if (eh_up_dif > 100)
+            int e_up_dif = energy + eup;
+            if (e_up_dif > 100)
             {
-                int eh_up_rest = 100 - hunger;
-                printt("饱食度 + " + eh_up_rest);
+                int e_up_rest = 100 - energy;
+                printt("精力 + " + e_up_rest);
+                energy = 100;
+            }
+            else
+            {
+                printt("精力 + " + eup);
+                energy += eup;
+            }
+        }
+
+        private static void h_up(int hup)
+        {
+            int h_up_dif = hunger + hup;
+            if (h_up_dif > 100)
+            {
+                int h_up_rest = 100 - hunger;
+                printt("饱食度 + " + h_up_rest);
                 hunger = 100;
             }
             else
             {
-                printt("饱食度 + " + ehup);
-                hunger += ehup;
+                printt("饱食度 + " + hup);
+                hunger += hup;
             }
         }
 
@@ -296,7 +312,7 @@ namespace UP
                 if (day == 1)
                 {
                     Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine(">>> 这是你在UP镇生活的第", day, "天");
+                    Console.WriteLine(">>> 这是你在UP镇生活的第"+ day+ "天");
                     Thread.Sleep(1 * 1000);
                     Console.WriteLine(">>> 加油吧，", name, "！");
                     Console.WriteLine("--------------------------------------------------");
@@ -308,7 +324,7 @@ namespace UP
                     Console.WriteLine("zzZ....");
                     Thread.Sleep(3 * 1000);
                     int energyup = 100 - energy;
-                    eh_up(ref energy, energyup);
+                    e_up(energyup);
                     Thread.Sleep(1 * 1000);
                     Console.WriteLine("--------------------------------------------------");
                     Console.WriteLine(">>> 这是你在UP镇生活的第", day, "天");
@@ -346,6 +362,7 @@ namespace UP
                     Console.WriteLine("--------------------------------------------------");
                 }
                 reset_time();
+                Thread.Sleep(10000);
             }
         }
     }
