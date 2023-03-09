@@ -7,27 +7,32 @@ namespace UP
     class UP
     {
         private static bool processing = false;
+
         private static int day = 0;
+        private static string name = "";
+
         private static int hour_tick = 8;
         private static int minute_tick = 0;
         private static string hour_display = "08";
         private static string minute_display = "00";
+
         private static int num = 0;
         private static int money = 100;
         private static int follower = 0;
         private static int play_all = 0;
         private static int energy = 100;
         private static int hunger = 100;
-        private static List<string> video = new List<string> {};
-        private static List<int> video_spread = new List<int> {};
-        private static List<int> video_play = new List<int> {};
-        private static List<string> video_release_time = new List<string> {};
 
+        private static List<string> video = new List<string> { };
+        private static List<int> video_spread = new List<int> { };
+        private static List<int> video_play = new List<int> { };
+        private static List<string> video_release_time = new List<string> { };
         private static int advice1 = 0;
 
-        private static ArrayList tags = new ArrayList() {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠","何同学","籽岷","布洛芬","网课","蔡徐坤","原神","Minecraft","世界杯",
+        private static List<string> tags = new List<string> {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠","何同学","籽岷","布洛芬","网课","蔡徐坤","原神","Minecraft","世界杯",
                 "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","俄乌局势","PlayStation","XBox","苹果","微软","华为",
                 "二十大","2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
+        private static List<string> tag = new List<string> { };
 
         private static Random random = new Random();
 
@@ -275,6 +280,70 @@ namespace UP
             }
         }
 
+        public static void hello()
+        {
+            if (day == 1)
+            {
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine(">>> 这是你在UP镇生活的第 " + day + " 天");
+                Thread.Sleep(1 * 1000);
+                Console.WriteLine(">>> 加油吧，" + name + "！");
+                Console.WriteLine("--------------------------------------------------");
+                Thread.Sleep(1 * 1000);
+                advice("up镇上还没有人知道你，快投稿你的第一个视频吧~", "投稿");
+            }
+            else
+            {
+                Console.WriteLine("zzZ....");
+                Thread.Sleep(3 * 1000);
+                int energyup = 100 - energy;
+                e_up(energyup);
+                Thread.Sleep(1 * 1000);
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine(">>> 这是你在UP镇生活的第 " + day + " 天");
+                Thread.Sleep((int)(0.5 * 1000));
+                Console.WriteLine(">>> 你一共投稿了 " + num + " 个作品");
+                Thread.Sleep((int)(0.5 * 1000));
+                Console.WriteLine(">>> 你现在的粉丝量为 " + follower);
+                Thread.Sleep((int)(0.5 * 1000));
+                Console.WriteLine(">>> 你现在的总播放量为 " + play_all);
+                Thread.Sleep((int)(0.5 * 1000));
+                Console.WriteLine(">>> 继续加油吧，" + name + "！");
+                Console.WriteLine("--------------------------------------------------");
+                Console.WriteLine("  结算昨日收益...");
+                int spread_width = 0;
+                for (int key = 0; key < video.Count; key++)
+                {
+                    string video_release_time_string = (string)video_release_time[key]!;
+                    string[] video_release_time_split = video_release_time_string.Split("|");
+                    if (video_release_time_split[0] == Convert.ToString(day - 1))
+                    {
+                        spread_width += (int)video_play[key]!;
+                    }
+                }
+                Console.WriteLine("  昨日总播放量：" + spread_width + " 获得收益：");
+                int add_money = random.Next(spread_width / 10, spread_width / 5);
+                money += add_money;
+                Console.WriteLine("  金币 + " + add_money);
+                Console.WriteLine("--------------------------------------------------");
+                for (int i = 0; i < 6; i++)
+                {
+                    tag.Add((string)tags[random.Next(0, tags.Count)]!);
+                }
+                for (int l = 0; l < tag.Count; l++)
+                {
+                    for (int j = tag.Count - 1; j > l; j--)
+                    {
+                        if (tag[l] == tag[j])
+                        {
+                            tag.RemoveAt(j);
+                        }
+                    }
+                }
+                Console.WriteLine("  今日热点：" + tag[0] + "，" + tag[1] + "，" + tag[2] + "，" + tag[3] + "，" + tag[4]);
+                Console.WriteLine("--------------------------------------------------");
+            }
+        }
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
@@ -302,76 +371,15 @@ namespace UP
             {
                 processing = true;
                 day += 1;
-                if (day == 1)
-                {
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine(">>> 这是你在UP镇生活的第 " + day + " 天");
-                    Thread.Sleep(1 * 1000);
-                    Console.WriteLine(">>> 加油吧，" + name + "！");
-                    Console.WriteLine("--------------------------------------------------");
-                    Thread.Sleep(1 * 1000);
-                    advice("up镇上还没有人知道你，快投稿你的第一个视频吧~", "投稿");
-                }
-                else
-                {
-                    Console.WriteLine("zzZ....");
-                    Thread.Sleep(3 * 1000);
-                    int energyup = 100 - energy;
-                    e_up(energyup);
-                    Thread.Sleep(1 * 1000);
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine(">>> 这是你在UP镇生活的第 " + day + " 天");
-                    Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 你一共投稿了 " + num + " 个作品");
-                    Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 你现在的粉丝量为 " + follower);
-                    Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 你现在的总播放量为 " + play_all);
-                    Thread.Sleep((int)0.5 * 1000);
-                    Console.WriteLine(">>> 继续加油吧，" + name + "！");
-                    Console.WriteLine("--------------------------------------------------");
-                    Console.WriteLine("  结算昨日收益...");
-                    int spread_width = 0;
-                    for (int key = 0; key < video.Count; key++)
-                    {
-                        string video_release_time_string = (string)video_release_time[key]!;
-                        string[] video_release_time_split = video_release_time_string.Split("|");
-                        if (video_release_time_split[0] == Convert.ToString(day - 1))
-                        {
-                            spread_width += (int)video_play[key]!;
-                        }
-                    }
-                    Console.WriteLine("  昨日总播放量：" + spread_width + " 获得收益：");
-                    int add_money = random.Next(spread_width / 10, spread_width / 5);
-                    money += add_money;
-                    Console.WriteLine("  金币 + " + add_money);
-                    Console.WriteLine("--------------------------------------------------");
-                    List<string> tag = new List<string> { };
-                    for (int i = 0; i < 6; i++)
-                    {
-                        tag.Add((string)tags[random.Next(0, tags.Count)]!);
-                    }
-                    for (int l = 0; l < tag.Count; l++)
-                    {
-                        for (int j = tag.Count - 1; j > l; j--)
-                        {
-                            if (tag[l] == tag[j])
-                            {
-                                tag.RemoveAt(j);
-                            }
-
-                        }
-                    }
-                    Console.WriteLine("  今日热点：" + tag[0] + "，" + tag[1] + "，" + tag[2] + "，" + tag[3] + "，" + tag[4]);
-                    Console.WriteLine("--------------------------------------------------");
-                }
+                hello();
                 reset_time();
                 processing = false;
+
                 while (true)
                 {
                     Console.Write("[ {0}:{1} ] ", hour_display, minute_display);
                     string? cmd = Console.ReadLine();
-
+                    
                     if (cmd == "睡觉")
                     {
                         break;
