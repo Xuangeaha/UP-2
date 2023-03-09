@@ -7,27 +7,21 @@ namespace UP
     class UP
     {
         private static bool processing = false;
-
         private static int day = 0;
         private static int hour_tick = 8;
         private static int minute_tick = 0;
         private static string hour_display = "08";
         private static string minute_display = "00";
-
         private static int num = 0;
-
         private static int money = 100;
-
         private static int follower = 0;
         private static int play_all = 0;
-
         private static int energy = 100;
         private static int hunger = 100;
-
-        private static ArrayList video = new ArrayList();
-        private static ArrayList video_spread = new ArrayList();
-        private static ArrayList video_play = new ArrayList();
-        private static ArrayList video_release_time = new ArrayList();
+        private static List<string> video = new List<string> {};
+        private static List<int> video_spread = new List<int> {};
+        private static List<int> video_play = new List<int> {};
+        private static List<string> video_release_time = new List<string> {};
 
         private static int advice1 = 0;
 
@@ -171,8 +165,7 @@ namespace UP
 
         private static void info_logic()
         {
-            List<int> video_play_list = new List<int>((int[])video_play.ToArray(typeof(int)));
-            play_all = video_play_list.Sum();
+            play_all = video_play.Sum();
 
             if (day == 1 && hour_tick == 20 && minute_tick == 0)
             {
@@ -353,12 +346,22 @@ namespace UP
                     money += add_money;
                     Console.WriteLine("  金币 + " + add_money);
                     Console.WriteLine("--------------------------------------------------");
-                    string tag1 = (string)tags[random.Next(0, tags.Count)]!;
-                    string tag2 = (string)tags[random.Next(0, tags.Count)]!;
-                    string tag3 = (string)tags[random.Next(0, tags.Count)]!;
-                    string tag4 = (string)tags[random.Next(0, tags.Count)]!;
-                    string tag5 = (string)tags[random.Next(0, tags.Count)]!;
-                    string[] tag = new string[] { tag1, tag2, tag3, tag4, tag5 };
+                    List<string> tag = new List<string> { };
+                    for (int i = 0; i < 6; i++)
+                    {
+                        tag.Add((string)tags[random.Next(0, tags.Count)]!);
+                    }
+                    for (int l = 0; l < tag.Count; l++)
+                    {
+                        for (int j = tag.Count - 1; j > l; j--)
+                        {
+                            if (tag[l] == tag[j])
+                            {
+                                tag.RemoveAt(j);
+                            }
+
+                        }
+                    }
                     Console.WriteLine("  今日热点：" + tag[0] + "，" + tag[1] + "，" + tag[2] + "，" + tag[3] + "，" + tag[4]);
                     Console.WriteLine("--------------------------------------------------");
                 }
@@ -368,6 +371,11 @@ namespace UP
                 {
                     Console.Write("[ {0}:{1} ] ", hour_display, minute_display);
                     string? cmd = Console.ReadLine();
+
+                    if (cmd == "睡觉")
+                    {
+                        break;
+                    }
                 }
             }
         }
