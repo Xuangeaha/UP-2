@@ -166,12 +166,12 @@ namespace UP
                 {
                     minute_tick = 0;
                     hour_tick += 1;
-                };
+                }
                 if (hour_tick == 24)
                 {
                     hour_tick = 0;
                     minute_tick = 0;
-                };
+                }
                 if (Convert.ToString(hour_tick).Length == 1)
                 {
                     hour_display = "0" + Convert.ToString(hour_tick);
@@ -179,7 +179,7 @@ namespace UP
                 else
                 {
                     hour_display = Convert.ToString(hour_tick);
-                };
+                }
                 if (Convert.ToString(minute_tick).Length == 1)
                 {
                     minute_display = "0" + Convert.ToString(minute_tick);
@@ -394,6 +394,20 @@ namespace UP
             }
         }
 
+        public static void have_food()
+        {
+            if (money >= 5)
+            {
+                money_down(5);
+                e_up(20);
+                h_up(40);
+            }
+            else
+            {
+                advice("金币不足，快去投稿视频赚钱吧~","投稿");
+            }
+        }
+
         public static void go_to_sleep()
         {
             if (8 < hour_tick && hour_tick < 20)
@@ -450,7 +464,12 @@ namespace UP
                     {
                         publish_a_video();
                     }
-
+                    
+                    if (cmd == "恰饭")
+                    {
+                        have_food();
+                    }
+                    
                     if (cmd == "睡觉")
                     {
                         go_to_sleep();
