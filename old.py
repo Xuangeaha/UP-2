@@ -109,6 +109,7 @@ def flwer():
                         printt("恭喜你，你新增了",new_follower,"个粉丝！")
                     time.sleep(40)
 
+
 def enghgr():
     global energy, hunger
     while True:
