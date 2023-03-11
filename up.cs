@@ -46,137 +46,12 @@ namespace UP
             Console.WriteLine(">>> {0} [ 输入 {1} ]", word, insert);
         }
 
-        private static void time_logic()
-        {
-            while (true)
-            {
-                Thread.Sleep(500);
-                minute_tick += 1;
-                if (minute_tick == 60)
-                {
-                    minute_tick = 0;
-                    hour_tick += 1;
-                };
-                if (hour_tick == 24)
-                {
-                    hour_tick = 0;
-                    minute_tick = 0;
-                };
-                if (Convert.ToString(hour_tick).Length == 1)
-                {
-                    hour_display = "0" + Convert.ToString(hour_tick);
-                }
-                else
-                {
-                    hour_display = Convert.ToString(hour_tick);
-                };
-                if (Convert.ToString(minute_tick).Length == 1)
-                {
-                    minute_display = "0" + Convert.ToString(minute_tick);
-                }
-                else
-                {
-                    minute_display = Convert.ToString(minute_tick);
-                }
-            }
-        }
-
         private static void reset_time()
         {
             hour_tick = 8;
             minute_tick = 0;
             hour_display = "08";
             minute_display = "00";
-        }
-
-        private static void spread_logic()
-        {
-            while (true)
-            {
-                if (minute_tick == 0)
-                {
-                    Thread.Sleep(random.Next(1, 40) * 1000);
-                    if (processing == false)
-                    {
-                        if (video.Count < 5)
-                        {
-                            for (int list_num = 0; list_num < video.Count; list_num++)
-                            {
-                                int new_play = random.Next(0, (int)video_spread[list_num]!);
-                                if (new_play == 0)
-                                { }
-                                else
-                                {
-                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
-                                    printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
-                                }
-                            }
-                        }
-                        else
-                        {
-                            for (int list_num = 0; list_num < video.Count; list_num++)
-                            {
-                                int new_play = random.Next((int)video_spread[list_num]! - 5, (int)video_spread[list_num]!);
-                                if (new_play == 0)
-                                { }
-                                else
-                                {
-                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
-                                    printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
-                                }
-                            }
-                        }
-                        Thread.Sleep(15 * 1000);
-                    }
-                }
-            }
-        }
-
-        private static void follower_logic()
-        {
-            while (true)
-            {
-                if (processing == false)
-                {
-                    if (num > 1 && day > 1 && play_all > 20)
-                    {
-                        if (hour_tick == 10 || hour_tick == 12 || hour_tick == 16 || hour_tick == 19)
-                        {
-                            Thread.Sleep(random.Next(1, 20) * 1000);
-                            int new_follower = random.Next(0, num / 5 + 1);
-                            if (new_follower == 0)
-                            { }
-                            else
-                            {
-                                follower += new_follower;
-                                printt("恭喜你，你新增了 " + new_follower + " 个粉丝！");
-                            }
-                            Thread.Sleep(40 * 1000);
-                        }
-                    }
-                }
-            }
-        }
-
-        private static void enghgr_logic()
-        {
-            while (true)
-            {
-                energy -= 1;
-                hunger -= 2;
-                Thread.Sleep(30 * 1000);
-            }
-        }
-
-        private static void info_logic()
-        {
-            play_all = video_play.Sum();
-
-            if (day == 1 && hour_tick == 20 && minute_tick == 0)
-            {
-                advice("该睡觉啦~ 明天元气满满地继续努力！", "睡觉");
-                Thread.Sleep(2 * 1000);
-            }
         }
 
         private static void e_up(int eup)
@@ -280,7 +155,132 @@ namespace UP
             }
         }
 
-        public static void hello()
+        private static void time_logic()
+        {
+            while (true)
+            {
+                Thread.Sleep(500);
+                minute_tick += 1;
+                if (minute_tick == 60)
+                {
+                    minute_tick = 0;
+                    hour_tick += 1;
+                };
+                if (hour_tick == 24)
+                {
+                    hour_tick = 0;
+                    minute_tick = 0;
+                };
+                if (Convert.ToString(hour_tick).Length == 1)
+                {
+                    hour_display = "0" + Convert.ToString(hour_tick);
+                }
+                else
+                {
+                    hour_display = Convert.ToString(hour_tick);
+                };
+                if (Convert.ToString(minute_tick).Length == 1)
+                {
+                    minute_display = "0" + Convert.ToString(minute_tick);
+                }
+                else
+                {
+                    minute_display = Convert.ToString(minute_tick);
+                }
+            }
+        }
+
+        private static void spread_logic()
+        {
+            while (true)
+            {
+                if (minute_tick == 0)
+                {
+                    Thread.Sleep(random.Next(1, 40) * 1000);
+                    if (processing == false)
+                    {
+                        if (video.Count < 5)
+                        {
+                            for (int list_num = 0; list_num < video.Count; list_num++)
+                            {
+                                int new_play = random.Next(0, (int)video_spread[list_num]!);
+                                if (new_play == 0)
+                                { }
+                                else
+                                {
+                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
+                                    printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int list_num = 0; list_num < video.Count; list_num++)
+                            {
+                                int new_play = random.Next((int)video_spread[list_num]! - 5, (int)video_spread[list_num]!);
+                                if (new_play == 0)
+                                { }
+                                else
+                                {
+                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
+                                    printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
+                                }
+                            }
+                        }
+                        Thread.Sleep(15 * 1000);
+                    }
+                }
+            }
+        }
+
+        private static void follower_logic()
+        {
+            while (true)
+            {
+                if (processing == false)
+                {
+                    if (num > 1 && day > 1 && play_all > 20)
+                    {
+                        if (hour_tick == 10 || hour_tick == 12 || hour_tick == 16 || hour_tick == 19)
+                        {
+                            Thread.Sleep(random.Next(1, 20) * 1000);
+                            int new_follower = random.Next(0, num / 5 + 1);
+                            if (new_follower == 0)
+                            { }
+                            else
+                            {
+                                follower += new_follower;
+                                printt("恭喜你，你新增了 " + new_follower + " 个粉丝！");
+                            }
+                            Thread.Sleep(40 * 1000);
+                        }
+                    }
+                }
+            }
+        }
+
+        private static void enghgr_logic()
+        {
+            while (true)
+            {
+                energy -= 1;
+                hunger -= 2;
+                Thread.Sleep(30 * 1000);
+            }
+        }
+
+        private static void info_logic()
+        {
+            play_all = video_play.Sum();
+
+            if (day == 1 && hour_tick == 20 && minute_tick == 0)
+            {
+                advice("该睡觉啦~ 明天元气满满地继续努力！", "睡觉");
+                Thread.Sleep(2 * 1000);
+            }
+        }
+
+        public static void good_morning()
         {
             if (day == 1)
             {
@@ -344,6 +344,19 @@ namespace UP
                 Console.WriteLine("--------------------------------------------------");
             }
         }
+
+        public static void sleep()
+        {
+            if (8 < hour_tick && hour_tick < 20)
+            {
+                printt("大白天的，睡不着~");
+            }
+            else
+            {
+                break;
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.WriteLine("我要当up主！2");
@@ -365,13 +378,13 @@ namespace UP
             info_thread.Start();
 
             Console.Write("欢迎来到UP镇！请设置你的名字：");
-            string? name = Console.ReadLine();
+            name = Console.ReadLine()!;
 
             while (true)
             {
                 processing = true;
                 day += 1;
-                hello();
+                good_morning();
                 reset_time();
                 processing = false;
 
@@ -379,7 +392,7 @@ namespace UP
                 {
                     Console.Write("[ {0}:{1} ] ", hour_display, minute_display);
                     string? cmd = Console.ReadLine();
-                    
+
                     if (cmd == "睡觉")
                     {
                         break;
