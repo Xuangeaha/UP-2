@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading;
+using ConsoleTables;
 
 namespace UP
 {
@@ -394,6 +395,15 @@ namespace UP
             }
         }
 
+        public static void print_information()
+        {
+            ConsoleTable consoletable = new ConsoleTable("one", "two", "three");
+            consoletable.AddRow(1, 2, 3)
+                .AddRow("this line should be longer", "yes it is", "oh");
+
+            consoletable.Write(format:Format.Alternative);
+        }
+
         public static void have_food()
         {
             if (money >= 5)
@@ -465,6 +475,11 @@ namespace UP
                         publish_a_video();
                     }
                     
+                    if (cmd == "信息")
+                    {
+                        print_information();
+                    }
+
                     if (cmd == "恰饭")
                     {
                         have_food();
