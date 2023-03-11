@@ -397,11 +397,14 @@ namespace UP
 
         public static void print_information()
         {
-            ConsoleTable consoletable = new ConsoleTable("one", "two", "three");
-            consoletable.AddRow(1, 2, 3)
-                .AddRow("this line should be longer", "yes it is", "oh");
-
-            consoletable.Write(format:Format.Alternative);
+            ConsoleTable consoletable = new ConsoleTable("信息", "值");
+            consoletable
+                .AddRow("总播放量", play_all)
+                .AddRow("粉丝数", follower)
+                .AddRow("精力", energy)
+                .AddRow("饱食度", hunger)
+                .AddRow("金币", money);
+            consoletable.Write(format: Format.Alternative);
         }
 
         public static void have_food()
@@ -414,7 +417,7 @@ namespace UP
             }
             else
             {
-                advice("金币不足，快去投稿视频赚钱吧~","投稿");
+                advice("金币不足，快去投稿视频赚钱吧~", "投稿");
             }
         }
 
@@ -460,7 +463,7 @@ namespace UP
                 day += 1;
                 good_morning();
                 reset_time();
-                
+
                 _processing = false;
 
                 while (true)
@@ -469,12 +472,12 @@ namespace UP
                     string? cmd = Console.ReadLine();
 
                     _processing = true;
-                    
+
                     if (cmd == "投稿")
                     {
                         publish_a_video();
                     }
-                    
+
                     if (cmd == "信息")
                     {
                         print_information();
@@ -484,7 +487,7 @@ namespace UP
                     {
                         have_food();
                     }
-                    
+
                     if (cmd == "睡觉")
                     {
                         go_to_sleep();
