@@ -27,9 +27,9 @@ namespace UP
         private static List<string> video_release_time = new List<string> { };
         private static int advice1 = 0;
 
-        private static List<string> tags = new List<string> {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠","何同学","籽岷","布洛芬","网课","蔡徐坤","原神","Minecraft","世界杯",
-                "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","俄乌局势","PlayStation","XBox","苹果","微软","华为",
-                "二十大","2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
+        private static List<string> tags = new List<string> {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠","何同学","籽岷","网课","蔡徐坤","原神","Minecraft","世界杯",
+                "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","PlayStation","XBox","苹果","微软","华为",
+                "2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
         private static List<string> tag = new List<string> { };
 
         private static Random random = new Random();
@@ -160,7 +160,7 @@ namespace UP
         {
             while (true)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(1 * 1000);
                 minute_tick += 1;
                 if (minute_tick == 60)
                 {
@@ -382,14 +382,14 @@ namespace UP
                 }
                 video_spread.Add(spread_num);
                 video_play.Add(0);
-                num += 1
+                num += 1;
                 Thread.Sleep((int)(0.5 * 1000));
                 printt("推广已开始！");
                 e_down(40);
                 h_down(40);
                 if (num == 1)
                 {
-                    advice("视频发布成功啦！快去你的空间看看吧~","空间");
+                    advice("视频发布成功啦！快去你的空间看看吧~", "空间");
                 }
             }
         }
@@ -432,9 +432,11 @@ namespace UP
             while (true)
             {
                 _processing = true;
+
                 day += 1;
                 good_morning();
                 reset_time();
+                
                 _processing = false;
 
                 while (true)
@@ -442,6 +444,8 @@ namespace UP
                     Console.Write("[ {0}:{1} ] ", hour_display, minute_display);
                     string? cmd = Console.ReadLine();
 
+                    _processing = true;
+                    
                     if (cmd == "投稿")
                     {
                         publish_a_video();
@@ -456,6 +460,8 @@ namespace UP
                     {
                         break;
                     }
+
+                    _processing = false;
                 }
             }
         }
