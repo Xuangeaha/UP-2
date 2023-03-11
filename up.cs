@@ -348,6 +348,52 @@ namespace UP
             }
         }
 
+        public static void publish_a_video()
+        {
+            if (energy < 40)
+            {
+                advice("你的精力不足，快去吃点东西吧~", "恰饭");
+            }
+            else if (hunger < 30)
+            {
+                advice("你的饱食度不足，快去吃点东西吧~", "恰饭");
+            }
+            else
+            {
+                printt("制作你的第 " + (num + 1) + " 个作品！");
+                Console.Write("[ {0}:{1} ] {2}", hour_display, minute_display, "设置作品标题：");
+                string? title = Console.ReadLine();
+                printt("视频投稿成功！推广加载中...");
+                video.Add(title!);
+                string release_time = release_time = day + "|" + hour_tick + "|" + minute_tick;
+                video_release_time.Add(release_time);
+                int spread_num = (num + follower) / 4 + 1;
+                if (spread_num <= 3)
+                {
+                    spread_num += 2;
+                }
+                if (day > 1)
+                {
+                    if (title?.IndexOf(tag[0]) != -1 || title?.IndexOf(tag[1]) != -1 || title?.IndexOf(tag[2]) != -1 || title?.IndexOf(tag[3]) != -1 || title?.IndexOf(tag[4]) != -1)
+                    {
+                        spread_num += 6;
+                        printt("视频中含有时事热点内容，推广力度加大！");
+                    }
+                }
+                video_spread.Add(spread_num);
+                video_play.Add(0);
+                num += 1
+                Thread.Sleep((int)(0.5 * 1000));
+                printt("推广已开始！");
+                e_down(40);
+                h_down(40);
+                if (num == 1)
+                {
+                    advice("视频发布成功啦！快去你的空间看看吧~","空间");
+                }
+            }
+        }
+
         public static void go_to_sleep()
         {
             if (8 < hour_tick && hour_tick < 20)
@@ -395,6 +441,11 @@ namespace UP
                 {
                     Console.Write("[ {0}:{1} ] ", hour_display, minute_display);
                     string? cmd = Console.ReadLine();
+
+                    if (cmd == "投稿")
+                    {
+                        publish_a_video();
+                    }
 
                     if (cmd == "睡觉")
                     {
