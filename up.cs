@@ -6,8 +6,6 @@ namespace UP
 {
     class UP
     {
-        private static bool processing = false;
-
         private static int day = 0;
         private static string name = "";
 
@@ -35,6 +33,9 @@ namespace UP
         private static List<string> tag = new List<string> { };
 
         private static Random random = new Random();
+
+        private static bool _processing = false;
+        private static bool _break = false;
 
         private static void printt(string args)
         {
@@ -197,7 +198,7 @@ namespace UP
                 if (minute_tick == 0)
                 {
                     Thread.Sleep(random.Next(1, 40) * 1000);
-                    if (processing == false)
+                    if (_processing == false)
                     {
                         if (video.Count < 5)
                         {
@@ -237,7 +238,7 @@ namespace UP
         {
             while (true)
             {
-                if (processing == false)
+                if (_processing == false)
                 {
                     if (num > 1 && day > 1 && play_all > 20)
                     {
@@ -282,6 +283,7 @@ namespace UP
 
         public static void good_morning()
         {
+            _break = false;
             if (day == 1)
             {
                 Console.WriteLine("--------------------------------------------------");
@@ -326,6 +328,7 @@ namespace UP
                 money += add_money;
                 Console.WriteLine("  金币 + " + add_money);
                 Console.WriteLine("--------------------------------------------------");
+                tag.Clear();
                 for (int i = 0; i < 6; i++)
                 {
                     tag.Add((string)tags[random.Next(0, tags.Count)]!);
@@ -345,7 +348,7 @@ namespace UP
             }
         }
 
-        public static void sleep()
+        public static void go_to_sleep()
         {
             if (8 < hour_tick && hour_tick < 20)
             {
@@ -353,7 +356,7 @@ namespace UP
             }
             else
             {
-                break;
+                _break = true;
             }
         }
 
@@ -382,11 +385,11 @@ namespace UP
 
             while (true)
             {
-                processing = true;
+                _processing = true;
                 day += 1;
                 good_morning();
                 reset_time();
-                processing = false;
+                _processing = false;
 
                 while (true)
                 {
@@ -394,6 +397,11 @@ namespace UP
                     string? cmd = Console.ReadLine();
 
                     if (cmd == "睡觉")
+                    {
+                        go_to_sleep();
+                    }
+
+                    if (_break == true)
                     {
                         break;
                     }
