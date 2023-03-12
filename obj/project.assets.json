@@ -36,6 +36,27 @@
           "lib/netstandard1.0/_._": {}
         }
       },
+      "NullLib.ConsoleEx/1.0.3": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.0/NullLib.ConsoleEx.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NullLib.ConsoleEx.dll": {}
+        }
+      },
+      "NullLib.ConsoleTable/1.0.3.2": {
+        "type": "package",
+        "dependencies": {
+          "NullLib.ConsoleEx": "1.0.3"
+        },
+        "compile": {
+          "lib/netstandard2.0/NullLib.ConsoleTable.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/NullLib.ConsoleTable.dll": {}
+        }
+      },
       "System.IO/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -180,6 +201,30 @@
         "microsoft.netcore.targets.1.1.0.nupkg.sha512",
         "microsoft.netcore.targets.nuspec",
         "runtime.json"
+      ]
+    },
+    "NullLib.ConsoleEx/1.0.3": {
+      "sha512": "Yz0PeofBwiki33fTaK3sYXV8gUrb/rkvVIY2fx5hQwuUhziVlcjFHJe896RCfmZkABCLgMQmWrYL8tsVuLCkOA==",
+      "type": "package",
+      "path": "nulllib.consoleex/1.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/NullLib.ConsoleEx.dll",
+        "nulllib.consoleex.1.0.3.nupkg.sha512",
+        "nulllib.consoleex.nuspec"
+      ]
+    },
+    "NullLib.ConsoleTable/1.0.3.2": {
+      "sha512": "7UEhzP/h22uw7/74kcONGMsoYU7H5c/6hhKyeSEFDYK304vQEnWEdUVgwTwkYg5PvzZtuWmlJ19IzAzVoUYJ0Q==",
+      "type": "package",
+      "path": "nulllib.consoletable/1.0.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/netstandard2.0/NullLib.ConsoleTable.dll",
+        "nulllib.consoletable.1.0.3.2.nupkg.sha512",
+        "nulllib.consoletable.nuspec"
       ]
     },
     "System.IO/4.3.0": {
@@ -686,7 +731,8 @@
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "ConsoleTables >= 2.4.2"
+      "ConsoleTables >= 2.4.2",
+      "NullLib.ConsoleTable >= 1.0.3.2"
     ]
   },
   "packageFolders": {
@@ -729,6 +775,10 @@
           "ConsoleTables": {
             "target": "Package",
             "version": "[2.4.2, )"
+          },
+          "NullLib.ConsoleTable": {
+            "target": "Package",
+            "version": "[1.0.3.2, )"
           }
         },
         "imports": [

@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v7.0": {
       "UP/1.0.0": {
         "dependencies": {
-          "ConsoleTables": "2.4.2"
+          "ConsoleTables": "2.4.2",
+          "NullLib.ConsoleTable": "1.0.3.2"
         },
         "runtime": {
           "UP.dll": {}
@@ -27,6 +28,25 @@
       },
       "Microsoft.NETCore.Platforms/1.1.0": {},
       "Microsoft.NETCore.Targets/1.1.0": {},
+      "NullLib.ConsoleEx/1.0.3": {
+        "runtime": {
+          "lib/netstandard2.0/NullLib.ConsoleEx.dll": {
+            "assemblyVersion": "1.0.3.0",
+            "fileVersion": "1.0.3.0"
+          }
+        }
+      },
+      "NullLib.ConsoleTable/1.0.3.2": {
+        "dependencies": {
+          "NullLib.ConsoleEx": "1.0.3"
+        },
+        "runtime": {
+          "lib/netstandard2.0/NullLib.ConsoleTable.dll": {
+            "assemblyVersion": "1.0.3.2",
+            "fileVersion": "1.0.3.2"
+          }
+        }
+      },
       "System.IO/4.3.0": {
         "dependencies": {
           "Microsoft.NETCore.Platforms": "1.1.0",
@@ -106,6 +126,20 @@
       "sha512": "sha512-aOZA3BWfz9RXjpzt0sRJJMjAscAUm3Hoa4UWAfceV9UTYxgwZ1lZt5nO2myFf+/jetYQo4uTP7zS8sJY67BBxg==",
       "path": "microsoft.netcore.targets/1.1.0",
       "hashPath": "microsoft.netcore.targets.1.1.0.nupkg.sha512"
+    },
+    "NullLib.ConsoleEx/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Yz0PeofBwiki33fTaK3sYXV8gUrb/rkvVIY2fx5hQwuUhziVlcjFHJe896RCfmZkABCLgMQmWrYL8tsVuLCkOA==",
+      "path": "nulllib.consoleex/1.0.3",
+      "hashPath": "nulllib.consoleex.1.0.3.nupkg.sha512"
+    },
+    "NullLib.ConsoleTable/1.0.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-7UEhzP/h22uw7/74kcONGMsoYU7H5c/6hhKyeSEFDYK304vQEnWEdUVgwTwkYg5PvzZtuWmlJ19IzAzVoUYJ0Q==",
+      "path": "nulllib.consoletable/1.0.3.2",
+      "hashPath": "nulllib.consoletable.1.0.3.2.nupkg.sha512"
     },
     "System.IO/4.3.0": {
       "type": "package",

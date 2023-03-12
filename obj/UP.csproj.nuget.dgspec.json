@@ -41,6 +41,10 @@
             "ConsoleTables": {
               "target": "Package",
               "version": "[2.4.2, )"
+            },
+            "NullLib.ConsoleTable": {
+              "target": "Package",
+              "version": "[1.0.3.2, )"
             }
           },
           "imports": [

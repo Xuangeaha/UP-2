@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Threading;
-using ConsoleTables;
+using NullLib.ConsoleTable;
 
 namespace UP
 {
@@ -292,7 +292,7 @@ namespace UP
                 Thread.Sleep(1 * 1000);
                 Console.WriteLine(">>> 加油吧，" + name + "！");
                 Console.WriteLine("--------------------------------------------------");
-                Thread.Sleep(1 * 1000);
+                Thread.Sleep((int)(0.5 * 1000));
                 advice("up镇上还没有人知道你，快投稿你的第一个视频吧~", "投稿");
             }
             else
@@ -404,7 +404,12 @@ namespace UP
                 .AddRow("精力", energy)
                 .AddRow("饱食度", hunger)
                 .AddRow("金币", money);
-            consoletable.Write(format: Format.Alternative);
+            Console.WriteLine(consoletable.ToAlternativeString());
+        }
+
+        public static void my_space()
+        {
+
         }
 
         public static void have_food()
@@ -423,7 +428,7 @@ namespace UP
 
         public static void go_to_sleep()
         {
-            if (8 < hour_tick && hour_tick < 20)
+            if (8 < hour_tick)
             {
                 printt("大白天的，睡不着~");
             }
@@ -483,6 +488,11 @@ namespace UP
                         print_information();
                     }
 
+                    if (cmd == "空间")
+                    {
+                        my_space();
+                    }
+                    
                     if (cmd == "恰饭")
                     {
                         have_food();

@@ -15,3 +15,5 @@ D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.genruntimeconfig.cache
 D:\ximalaya\resources\library\UP\obj\Debug\net7.0\ref\UP.dll
 D:\ximalaya\resources\library\UP\bin\Debug\net7.0\ConsoleTables.dll
 D:\ximalaya\resources\library\UP\obj\Debug\net7.0\UP.csproj.CopyComplete
+D:\ximalaya\resources\library\UP\bin\Debug\net7.0\NullLib.ConsoleEx.dll
+D:\ximalaya\resources\library\UP\bin\Debug\net7.0\NullLib.ConsoleTable.dll
