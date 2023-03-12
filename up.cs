@@ -114,12 +114,12 @@ namespace UP
             int h_down_dif = hunger - hdown;
             if (h_down_dif < 0)
             {
-                printt("精力 - " + hunger);
+                printt("饱食度 - " + hunger);
                 hunger = 0;
             }
             else
             {
-                printt("精力 - " + hdown);
+                printt("饱食度 - " + hdown);
                 hunger -= hdown;
             }
             if (hunger <= 20)
@@ -286,10 +286,9 @@ namespace UP
             {
                 Console.WriteLine("--------------------------------------------------");
                 Console.WriteLine(">>> 这是你在UP镇生活的第 " + day + " 天");
-                Thread.Sleep(1 * 1000);
+                Thread.Sleep((int)(0.75 * 1000));
                 Console.WriteLine(">>> 加油吧，" + name + "！");
                 Console.WriteLine("--------------------------------------------------");
-                Thread.Sleep((int)(0.5 * 1000));
                 advice("up镇上还没有人知道你，快投稿你的第一个视频吧~", "投稿");
             }
             else
@@ -383,7 +382,9 @@ namespace UP
                 num += 1;
                 Thread.Sleep((int)(0.5 * 1000));
                 printt("推广已开始！");
+                Thread.Sleep((int)(0.5 * 1000));
                 e_down(40);
+                Thread.Sleep((int)(0.5 * 1000));
                 h_down(40);
                 if (num == 1)
                 {
@@ -425,8 +426,8 @@ namespace UP
                         video_play[key_space],
                         video_spread[key_space]
                     );
-                    Console.WriteLine(consoletable.ToMarkdownString());
                 }
+                Console.WriteLine(consoletable.ToMarkdownString());
             }
             Console.WriteLine("--------------------------------------------------");
         }
@@ -436,7 +437,9 @@ namespace UP
             if (money >= 5)
             {
                 money_down(5);
+                Thread.Sleep((int)(0.5 * 1000));
                 e_up(20);
+                Thread.Sleep((int)(0.5 * 1000));
                 h_up(40);
             }
             else
@@ -447,7 +450,7 @@ namespace UP
 
         public static void go_to_sleep()
         {
-            if (8 < hour_tick)
+            if (8 < hour_tick && hour_tick < 20)
             {
                 printt("大白天的，睡不着~");
             }
