@@ -409,7 +409,29 @@ namespace UP
 
         public static void my_space()
         {
-
+            printt("欢迎来到你的个人空间！");
+            Console.WriteLine("--------------------------------------------------");
+            Console.WriteLine(" " + name + " 的 个人空间" + "   " + "粉丝数 " + follower + " 播放数 " + play_all);
+            if (num == 0)
+            {
+                advice("你的空间里还没有视频，快去投稿吧~", "投稿");
+            }
+            else
+            {
+                ConsoleTable consoletable = new ConsoleTable("序号", "视频标题", "发布时间", "播放量", "展现量");
+                for (int key_space = 0; key_space < num; key_space++)
+                {
+                    consoletable.AddRow(
+                        key_space + 1,
+                        video[key_space],
+                        "Day " + video_release_time[key_space].Split("|")[0] + "  " + video_release_time[key_space].Split("|")[1] + ": " + video_release_time[key_space].Split("|")[2],
+                        video_play[key_space],
+                        video_spread[key_space]
+                    );
+                    Console.WriteLine(consoletable.ToMarkdownString());
+                }
+            }
+            Console.WriteLine("--------------------------------------------------");
         }
 
         public static void have_food()
@@ -492,7 +514,7 @@ namespace UP
                     {
                         my_space();
                     }
-                    
+
                     if (cmd == "恰饭")
                     {
                         have_food();
