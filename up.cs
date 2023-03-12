@@ -161,7 +161,7 @@ namespace UP
         {
             while (true)
             {
-                Thread.Sleep(1 * 1000);
+                Thread.Sleep((int)(0.75 * 1000));
                 minute_tick += 1;
                 if (minute_tick == 60)
                 {
@@ -203,29 +203,29 @@ namespace UP
                     {
                         if (video.Count < 5)
                         {
-                            for (int list_num = 0; list_num < video.Count; list_num++)
+                            for (int key_list = 0; key_list < video.Count; key_list++)
                             {
-                                int new_play = random.Next(0, (int)video_spread[list_num]!);
+                                int new_play = random.Next(0, (int)video_spread[key_list]!);
                                 if (new_play == 0)
                                 { }
                                 else
                                 {
-                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
-                                    printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
+                                    video_play[key_list] = (int)video_play[key_list]! + new_play;
+                                    printt("恭喜你，你的视频 " + video[key_list] + " 新增了 " + new_play + " 次播放！");
                                 }
                             }
                         }
                         else
                         {
-                            for (int list_num = 0; list_num < video.Count; list_num++)
+                            for (int key_list = 0; key_list < video.Count; key_list++)
                             {
-                                int new_play = random.Next((int)video_spread[list_num]! - 5, (int)video_spread[list_num]!);
+                                int new_play = random.Next((int)video_spread[key_list]! - 5, (int)video_spread[key_list]!);
                                 if (new_play == 0)
                                 { }
                                 else
                                 {
-                                    video_play[list_num] = (int)video_play[list_num]! + new_play;
-                                    printt("恭喜你，你的视频 " + video[list_num] + " 新增了 " + new_play + " 次播放！");
+                                    video_play[key_list] = (int)video_play[key_list]! + new_play;
+                                    printt("恭喜你，你的视频 " + video[key_list] + " 新增了 " + new_play + " 次播放！");
                                 }
                             }
                         }
@@ -411,7 +411,7 @@ namespace UP
         {
             printt("欢迎来到你的个人空间！");
             Console.WriteLine("--------------------------------------------------");
-            Console.WriteLine(" " + name + " 的 个人空间" + "   " + "粉丝数 " + follower + " 播放数 " + play_all);
+            Console.WriteLine(" " + name + " 的 个人空间" + "   " + "粉丝数 " + follower + " 播放数 " + play_all + "\n");
             if (num == 0)
             {
                 advice("你的空间里还没有视频，快去投稿吧~", "投稿");
