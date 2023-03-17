@@ -4,37 +4,38 @@ namespace UP
 {
     class UP
     {
-        private static int day = 0;
+        private static int day;
         private static string name = "";
 
         private static int hour_tick = 8;
-        private static int minute_tick = 0;
+        private static int minute_tick;
         private static string hour_display = "08";
         private static string minute_display = "00";
 
-        private static int num = 0;
+        private static int num;
         private static int money = 100;
-        private static int follower = 0;
-        private static int play_all = 0;
+        private static int follower;
+        private static int play_all;
         private static int energy = 100;
         private static int hunger = 100;
 
-        private static List<string> video = new List<string> { };
-        private static List<int> video_spread = new List<int> { };
-        private static List<int> video_play = new List<int> { };
-        private static List<string> video_release_time = new List<string> { };
+        private static List<string> video = new List<string>();
+        private static List<int> video_spread = new List<int>();
+        private static List<int> video_play = new List<int>();
+        private static List<string> video_release_time = new List<string>();
 
-        private static int advice1 = 0;
+        private static int advice1;
 
-        private static List<string> tags = new List<string> {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠","何同学","籽岷","网课","蔡徐坤","原神","Minecraft","世界杯",
-                "阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原","华强","人类高质量","PlayStation","XBox","苹果","微软","华为",
-                "2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
-        private static List<string> tag = new List<string> { };
+        private static List<string> tags = new List<string> {"我的世界","游戏","iPhone 14","疫情","科技","猫和老鼠",
+            "何同学","籽岷","网课","蔡徐坤","原神","Minecraft","世界杯","阿根廷","鬼畜","社交","知识","纪录片","核酸","抗原",
+            "华强","人类高质量","PlayStation","XBox","苹果","微软","华为","2023","英伟达","4090","4090 ti","腾讯","体育","阳康"};
+
+        private static List<string> tag = new List<string>();
 
         private static Random random = new Random();
 
-        private static bool _processing = false;
-        private static bool _break = false;
+        private static bool _processing;
+        private static bool _break;
 
         private static void printt(string args)
         {
@@ -86,7 +87,7 @@ namespace UP
             }
         }
 
-        public static void e_down(int edown)
+        private static void e_down(int edown)
         {
             int e_down_dif = energy - edown;
             if (e_down_dif < 0)
@@ -110,7 +111,7 @@ namespace UP
             }
         }
 
-        public static void h_down(int hdown)
+        private static void h_down(int hdown)
         {
             int h_down_dif = hunger - hdown;
             if (h_down_dif < 0)
@@ -134,24 +135,24 @@ namespace UP
             }
         }
 
-        private static void money_up(int moneyup)
+        private static void m_up(int mup)
         {
-            money += moneyup;
-            printt("金币 + " + moneyup);
+            money += mup;
+            printt("金币 + " + mup);
         }
 
-        private static void money_down(int moneydown)
+        private static void m_down(int mdown)
         {
-            int money_dif = money - moneydown;
-            if (money_dif < 0)
+            int m_dif = money - mdown;
+            if (m_dif < 0)
             {
                 printt("金币 - " + money);
                 advice("你的金币已用尽。快去投稿视频获得金币吧~", "投稿");
             }
             else
             {
-                printt("金币 - " + moneydown);
-                money -= moneydown;
+                printt("金币 - " + mdown);
+                money -= mdown;
             }
         }
 
@@ -199,31 +200,26 @@ namespace UP
         {
             while (true)
             {
-                if (minute_tick == 0)
+                if (minute_tick != 0) continue;
+                Thread.Sleep(random.Next(1, 30) * 1000);
+                if (_processing) continue;
+                for (int key_list = 0; key_list < video.Count; key_list++)
                 {
-                    Thread.Sleep(random.Next(1, 40) * 1000);
-                    if (_processing == false)
+                    int new_play;
+                    if (video.Count < 5)
                     {
-                        for (int key_list = 0; key_list < video.Count; key_list++)
-                        {
-                            int new_play = 0;
-                            if (video.Count < 5)
-                            {
-                                new_play = random.Next(0, (int)video_spread[key_list]! + 1);
-                            }
-                            else
-                            {
-                                new_play = random.Next((int)video_spread[key_list]! - 5, (int)video_spread[key_list]! + 1);
-                            }
-                            if (new_play != 0)
-                            {
-                                video_play[key_list] = (int)video_play[key_list]! + new_play;
-                                printt("恭喜你，你的视频 " + video[key_list] + " 新增了 " + new_play + " 次播放！");
-                            }
-                        }
-                        Thread.Sleep(15 * 1000);
+                        new_play = random.Next(0, video_spread[key_list] + 1);
                     }
+                    else
+                    {
+                        new_play = random.Next(video_spread[key_list] - 5, video_spread[key_list] + 1);
+                    }
+
+                    if (new_play == 0) continue;
+                    video_play[key_list] = video_play[key_list] + new_play;
+                    printt("恭喜你，你的视频 " + video[key_list] + " 新增了 " + new_play + " 次播放！");
                 }
+                Thread.Sleep(15 * 1000);
             }
         }
 
@@ -231,23 +227,17 @@ namespace UP
         {
             while (true)
             {
-                if (_processing == false)
+                if (_processing) continue;
+                if (num <= 1 || day <= 1 || play_all <= 20) continue;
+                if (hour_tick is not (10 or 12 or 16 or 19)) continue;
+                Thread.Sleep(random.Next(1, 20) * 1000);
+                int new_follower = random.Next(0, num / 5 + 1);
+                if (new_follower != 0)
                 {
-                    if (num > 1 && day > 1 && play_all > 20)
-                    {
-                        if (hour_tick == 10 || hour_tick == 12 || hour_tick == 16 || hour_tick == 19)
-                        {
-                            Thread.Sleep(random.Next(1, 20) * 1000);
-                            int new_follower = random.Next(0, num / 5 + 1);
-                            if (new_follower != 0)
-                            {
-                                follower += new_follower;
-                                printt("恭喜你，你新增了 " + new_follower + " 个粉丝！");
-                            }
-                            Thread.Sleep(40 * 1000);
-                        }
-                    }
+                    follower += new_follower;
+                    printt("恭喜你，你新增了 " + new_follower + " 个粉丝！");
                 }
+                Thread.Sleep(40 * 1000);
             }
         }
 
@@ -303,22 +293,22 @@ namespace UP
                 int spread_width = 0;
                 for (int key = 0; key < video.Count; key++)
                 {
-                    string video_release_time_string = (string)video_release_time[key]!;
+                    string video_release_time_string = video_release_time[key];
                     string[] video_release_time_split = video_release_time_string.Split("|");
                     if (video_release_time_split[0] == Convert.ToString(day - 1))
                     {
-                        spread_width += (int)video_play[key]!;
+                        spread_width += video_play[key];
                     }
                 }
                 Console.WriteLine("  昨日总播放量：" + spread_width + " 获得收益：");
                 int add_money = random.Next(spread_width / 10, spread_width / 5);
-                money += add_money;
+                m_up(add_money);
                 Console.WriteLine("  金币 + " + add_money);
                 Console.WriteLine("------------------------------------------------------------");
                 tag.Clear();
                 for (int i = 0; i < 6; i++)
                 {
-                    tag.Add((string)tags[random.Next(0, tags.Count)]!);
+                    tag.Add(tags[random.Next(0, tags.Count)]);
                 }
                 for (int l = 0; l < tag.Count; l++)
                 {
@@ -352,7 +342,7 @@ namespace UP
                 string? title = Console.ReadLine();
                 printt("视频投稿成功！推广加载中...");
                 video.Add(title!);
-                string release_time = release_time = day + "|" + hour_tick + "|" + minute_tick;
+                string release_time = day + "|" + hour_tick + "|" + minute_tick;
                 video_release_time.Add(release_time);
                 int spread_num = (num + follower) / 3 + 1;
                 if (spread_num <= 3)
@@ -361,7 +351,11 @@ namespace UP
                 }
                 if (day > 1)
                 {
-                    if (title?.IndexOf(tag[0]) != -1 || title?.IndexOf(tag[1]) != -1 || title?.IndexOf(tag[2]) != -1 || title?.IndexOf(tag[3]) != -1 || title?.IndexOf(tag[4]) != -1)
+                    if (title!.IndexOf(tag[0], StringComparison.Ordinal) != -1 || 
+                        title.IndexOf(tag[1], StringComparison.Ordinal) != -1 || 
+                        title.IndexOf(tag[2], StringComparison.Ordinal) != -1 || 
+                        title.IndexOf(tag[3], StringComparison.Ordinal) != -1 || 
+                        title.IndexOf(tag[4], StringComparison.Ordinal) != -1)
                     {
                         spread_num += 6;
                         printt("视频中含有时事热点内容，推广力度加大！");
@@ -429,7 +423,7 @@ namespace UP
             }
             if (money >= 5)
             {
-                money_down(5);
+                m_down(5);
                 Thread.Sleep((int)(0.5 * 1000));
                 e_up(20);
                 Thread.Sleep((int)(0.5 * 1000));
@@ -443,7 +437,7 @@ namespace UP
 
         public static void go_to_sleep()
         {
-            if (8 < hour_tick && hour_tick < 20)
+            if (hour_tick is > 8 and < 20)
             {
                 printt("大白天的，睡不着~");
             }
@@ -493,32 +487,30 @@ namespace UP
 
                     _processing = true;
 
-                    if (cmd == "投稿")
+                    switch (cmd)
                     {
-                        publish_a_video();
+                        case "投稿":
+                            publish_a_video();
+                            break;
+                        
+                        case "信息":
+                            print_information();
+                            break;
+                        
+                        case "空间":
+                            my_space();
+                            break;
+                        
+                        case "恰饭":
+                            have_food();
+                            break;
+                        
+                        case "睡觉":
+                            go_to_sleep();
+                            break;
                     }
 
-                    if (cmd == "信息")
-                    {
-                        print_information();
-                    }
-
-                    if (cmd == "空间")
-                    {
-                        my_space();
-                    }
-
-                    if (cmd == "恰饭")
-                    {
-                        have_food();
-                    }
-
-                    if (cmd == "睡觉")
-                    {
-                        go_to_sleep();
-                    }
-
-                    if (_break == true)
+                    if (_break)
                     {
                         break;
                     }
