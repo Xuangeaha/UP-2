@@ -206,7 +206,7 @@ namespace UP
                 for (int key_list = 0; key_list < video.Count; key_list++)
                 {
                     int new_play;
-                    if (video.Count < 5)
+                    if (video.Count < 6)
                     {
                         new_play = random.Next(0, video_spread[key_list] + 1);
                     }
@@ -227,17 +227,17 @@ namespace UP
         {
             while (true)
             {
-                if (_processing) continue;
-                if (num <= 1 || day <= 1 || play_all <= 20) continue;
-                if (hour_tick is not (10 or 12 or 16 or 19)) continue;
+                if (num <= 1 & day <= 1 & play_all <= 20) continue;
+                if (hour_tick != 10 & hour_tick != 12 & hour_tick != 16 & hour_tick != 19) continue;
                 Thread.Sleep(random.Next(1, 20) * 1000);
+                if (_processing) continue;
                 int new_follower = random.Next(0, num / 5 + 1);
                 if (new_follower != 0)
                 {
                     follower += new_follower;
                     printt("恭喜你，你新增了 " + new_follower + " 个粉丝！");
                 }
-                Thread.Sleep(40 * 1000);
+                Thread.Sleep(20 * 1000);
             }
         }
 
@@ -302,26 +302,27 @@ namespace UP
                 }
                 Console.WriteLine("  昨日总播放量：" + spread_width + " 获得收益：");
                 int add_money = random.Next(spread_width / 10, spread_width / 5);
+                reset_time();
                 m_up(add_money);
-                Console.WriteLine("  金币 + " + add_money);
                 Console.WriteLine("------------------------------------------------------------");
                 tag.Clear();
-                for (int i = 0; i < 6; i++)
+                while (tag.Count < 6)
                 {
                     tag.Add(tags[random.Next(0, tags.Count)]);
-                }
-                for (int l = 0; l < tag.Count; l++)
-                {
-                    for (int j = tag.Count - 1; j > l; j--)
+                    for (int i = 0; i < tag.Count; i++)
                     {
-                        if (tag[l] == tag[j])
+                        for (int j = tag.Count - 1; j > i; j--)
                         {
-                            tag.RemoveAt(j);
+                            if (tag[i] == tag[j])
+                            {
+                                tag.RemoveAt(j);
+                            }
                         }
                     }
                 }
                 Console.WriteLine("  今日热点：" + tag[0] + "，" + tag[1] + "，" + tag[2] + "，" + tag[3] + "，" + tag[4]);
                 Console.WriteLine("------------------------------------------------------------");
+                reset_time();
             }
         }
 
@@ -344,7 +345,7 @@ namespace UP
                 video.Add(title!);
                 string release_time = day + "|" + hour_tick + "|" + minute_tick;
                 video_release_time.Add(release_time);
-                int spread_num = (num + follower) / 3 + 1;
+                int spread_num = (day + num + follower) / 4 + 1;
                 if (spread_num <= 3)
                 {
                     spread_num += 2;
@@ -361,6 +362,7 @@ namespace UP
                         printt("视频中含有时事热点内容，推广力度加大！");
                     }
                 }
+                Thread.Sleep((int)(0.5 * 1000));
                 video_spread.Add(spread_num);
                 video_play.Add(0);
                 num += 1;
@@ -476,12 +478,13 @@ namespace UP
 
                 day += 1;
                 good_morning();
-                reset_time();
 
                 _processing = false;
 
                 while (true)
                 {
+                    _processing = false;
+                    
                     Console.Write("[ {0}:{1} ] ", hour_display, minute_display);
                     string? cmd = Console.ReadLine();
 
@@ -510,13 +513,7 @@ namespace UP
                             break;
                     }
 
-                    if (_break)
-                    {
-                        break;
-                    }
-
-                    _processing = false;
-
+                    if (_break) break;
                 }
             }
         }
