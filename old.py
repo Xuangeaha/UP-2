@@ -4,6 +4,7 @@ import threading
 import prettytable
 
 
+
 print("我要当up主！2023.0.1")
 print("--------------------------------------------------")
 
